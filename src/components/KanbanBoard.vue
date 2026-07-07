@@ -14,47 +14,6 @@ function increment() {
 
 const taskText = ref("")
 
-// const columns = ref([
-//   {
-//     id: 1,
-//     title: 'Todo',
-//     tasks: [
-//       {
-//         id: 1,
-//         text: 'Learn Vue'
-//       }
-//     ]
-//   },
-//   {
-//     id: 2,
-//     title: 'Doing',
-//     tasks: []
-//   },
-//   {
-//     id: 3,
-//     title: 'Done',
-//     tasks: []
-//   }
-// ])
-
-// const columns = ref(store.columns)
-
-// const totalTasks = computed(() => store.columns.reduce(
-//     (count, column) => count + column.tasks.length, 0
-// ))
-
-// const saved =
-//   localStorage.getItem('kanban')
-
-// if (saved) {
-//   columns.value =
-//     JSON.parse(saved)
-// }
-
-// watch(columns, (value) => {
-//     localStorage.setItem('kanban', JSON.stringify(value))
-// }, { deep: true })
-
 watch(() => store.columns, (columns) => {
   localStorage.setItem('kanban', JSON.stringify(columns))
 }, { deep: true })
@@ -66,31 +25,6 @@ function addTask(){
 
     taskText.value=""
 }
-
-// function deleteTask(columnId, taskId) {
-//     const column = columns.value.find(col => col.id === columnId)
-
-//     if(!column) return
-
-//     column.tasks = column.tasks.filter(task => task.id !== taskId)
-    
-// }
-
-// function moveTaskRight(columnId, taskId) {
-//     const currentIndex = columns.value.findIndex(col => col.id === columnId)
-
-//     if (currentIndex === -1 || currentIndex === columns.value.length - 1) return
-
-//     const currentColumn = columns.value[currentIndex]
-
-//     const nextColumn = columns.value[currentIndex + 1]
-
-//     const taskIndex = currentColumn.tasks.findIndex(task => task.id === taskId)
-
-//     const [task] = currentColumn.tasks.splice(taskIndex, 1)
-
-//     nextColumn.tasks.push(task)
-// }
 
 </script>
 
@@ -113,8 +47,6 @@ function addTask(){
 </div>
 
 </template>
-
-
 
 <style scoped>
 h1 {
